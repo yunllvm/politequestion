@@ -1,14 +1,24 @@
 import {createAction, handleActions} from 'redux-actions';
 
-const SAMPLE_ACTION = 'auth/SAMPLE_ACTION';
 
-export const sampleAction = createAction(SAMPLE_ACTION);
+const TRUE_ACTION = 'auth/TRUE';
+const FALSE_ACTION = 'auth/FALSE'; 
 
-const initialState = {};
+export const tact = createAction(TRUE_ACTION);
+export const fact = createAction(FALSE_ACTION);
+
+const initialState = {
+    sign:false
+};
 
 const auth = handleActions(
     {
-        [SAMPLE_ACTION]:(state,action)=>state,
+        [TRUE_ACTION]:()=>{
+            return true;
+        },
+        [FALSE_ACTION]:()=>{
+            return false;
+        }
     },
     initialState
 );

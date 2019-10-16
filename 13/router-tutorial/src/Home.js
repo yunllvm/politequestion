@@ -1,12 +1,30 @@
 import React from 'react';
+import {connect } from 'react-redux';
+import {tact, fact} from './modules/auth';
 
-const Home = () => {
+const Home = ({sign, tact, fact}) => {
+
+  if(sign===true){
+    fact();
+  }else{
+    tact();
+  }
+
   return (
     <div>
-      <h1>홈</h1>
-      <p>홈, 그 페이지는 가장 먼저 보여지는 페이지.</p>
+      <h1>Home</h1>
+      <div>{sign}</div>
     </div>
   );
 };
 
-export default Home;
+export default connect(
+  state => ({
+    sign:state.sign
+  }),
+  {
+    tact,
+    fact
+  }
+
+)(Home);
